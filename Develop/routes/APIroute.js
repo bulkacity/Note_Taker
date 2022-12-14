@@ -16,9 +16,9 @@ apiRouter.post('/api/notes', (req, res) => {
   if (id && title && text) {
     // Variable for the object we will save
     const newNote = {
-      id : uuid(),
       title,
       text,
+      note_id : uuidv4(),
       };
 
       readAndAppend(newNote, '../db/db.json');
