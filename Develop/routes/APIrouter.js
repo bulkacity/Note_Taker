@@ -3,7 +3,7 @@ const apiRouter = express.Router();
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const {
-  readFromFile,
+  
   writeToFile,
   readAndAppend,
 } = require("../helpers/fsUtils");
@@ -12,15 +12,16 @@ const fsp = require("fs").promises;
 
 // GET Route for retrieving diagnostic information
 apiRouter.get("/api/notes", async (req, res) => {
-  console.info("requesting /api/notes GET", req);
-  console.info("response for api/notes GET", res);
+  // console.info("requesting /api/notes GET", req);
+  // console.info("response for api/notes GET", res);
   try {
-    const notes = await readFromFile();
+    const notes = await fsp.readFile("Develop/db/db.json","utf-8");
     console.table(JSON.parse(notes));
     if (!notes) {
       res.status(400).json({ message: "No notes found." });
     }
-    res.status(200).json({ message: "Success", notes });
+    // res.status(200).json(JSON.parse(notes));
+    res.json(JSON.parse(notes));
   } catch (error) {
     res.status(500).send(error);
   }

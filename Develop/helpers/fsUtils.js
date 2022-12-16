@@ -2,9 +2,9 @@ const fsp = require(`fs/promises`);
 // Promise version of fs.readFile
 
 
-const readFromFile = () => {
-   return fsp.readFile("Develop/db/db.json","utf-8")
-};
+// const readFromFile = () => {
+//    return fsp.readFile("Develop/db/db.json","utf-8")
+// };
 // const readFromFile = (json) => {
 //     fs.readFile(`${__dirname}/../db/${json}`,"utf-8").then((result)=>{
 //        console.log(result);
@@ -12,7 +12,6 @@ const readFromFile = () => {
 //     }).catch((err) => console.error("There is an error"+ err));
 // };
 
-console.log(readFromFile())
 
 /**
  *  Function to write data to the JSON file given a destination and some content
@@ -42,4 +41,4 @@ const readAndAppend = (content, file) => {
 };
 
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+module.exports = { writeToFile, readAndAppend };

@@ -1,8 +1,28 @@
 {
+  "name": "note_taker",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bulkacity/Note_Taker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bulkacity/Note_Taker/issues"
+  },
+  "homepage": "https://github.com/bulkacity/Note_Taker#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "nodemon": "^2.0.20",
-    "uuid": "^9.0.0",
-    "uuid-js": "^0.7.5"
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
