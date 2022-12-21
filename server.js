@@ -1,21 +1,20 @@
 const express = require('express');
+const apiRoute = require('./routes/APIrouter');
+const htmlRoute = require('./routes/HTMLrouter');
 
 const PORT = process.env.PORT || 3001;
-const app = express();
-const apiRoutes = require('./Develop/routes/apiRoutes');
-const htmlRoutes = require('./Develop/routes/htmlRoutes');
 
-// Parse URL encoded & JSON
-app.use(express.urlencoded({ extended: true }));
+const app = express();
+
+app.use(express.urlencoded({ extended: true}));
+
+
+app.use(express.static('public'));
 app.use(express.json());
 
-// Host public folder
-app.use(express.static('public'));
-
-// Use apiRoutes
-app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
+app.use('/api', apiRoute);
+app.use('/', htmlRoute);
 
 app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
+    console.log(`App listening at http://localhost:${PORT}`)
 });

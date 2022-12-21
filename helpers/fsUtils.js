@@ -1,18 +1,8 @@
-const fsp = require(`fs/promises`);
+const fs = require('fs');
+const util = require('util');
+
 // Promise version of fs.readFile
-
-
-// const readFromFile = () => {
-//    return fsp.readFile("Develop/db/db.json","utf-8")
-// };
-// const readFromFile = (json) => {
-//     fs.readFile(`${__dirname}/../db/${json}`,"utf-8").then((result)=>{
-//        console.log(result);
-//         return(result);
-//     }).catch((err) => console.error("There is an error"+ err));
-// };
-
-
+const readFromFile = util.promisify(fs.readFile);
 /**
  *  Function to write data to the JSON file given a destination and some content
  *  @param {string} destination The file you want to write to.
@@ -20,7 +10,7 @@ const fsp = require(`fs/promises`);
  *  @returns {void} Nothing
  */
 const writeToFile = (destination, content) =>
-  fsp.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
+  fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(`\nData written to ${destination}`)
   );
 /**
@@ -30,15 +20,15 @@ const writeToFile = (destination, content) =>
  *  @returns {void} Nothing
  */
 const readAndAppend = (content, file) => {
-    console.log("attempt to read and append");
-  fsp.readFile(file, "utf8").then(data => {
-    
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
       const parsedData = JSON.parse(data);
-      console.log("this is the parsed data");
       parsedData.push(content);
       writeToFile(file, parsedData);
-    });
+    }
+  });
 };
 
-
-module.exports = { writeToFile, readAndAppend };
+module.exports = { readFromFile, readAndAppend };
