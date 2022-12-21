@@ -1,6 +1,12 @@
 const apiRoute = require('express').Router();
+const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const { readFromFile, readAndAppend} = require('../helpers/fsUtils');
+
+const notesArray = readFromFile('./db/db.json')
+.then((data) => (JSON.parse(data)));
+
+console.log(notesArray);
 
 apiRoute.get('/notes', (req, res) => {
     
@@ -15,9 +21,10 @@ apiRoute.post('/notes', (req, res) => {
 
     if (req.body) {
         const newNote = {
-            note_id: uuidv4(),
+            
             title,
             text,
+            id: uuidv4(),
         }
 
         readAndAppend(newNote, './db/db.json');
@@ -28,4 +35,30 @@ apiRoute.post('/notes', (req, res) => {
     }
 });
 
+// adding db instead of notes //
+apiRoute.delete('/notes/:id',(req, res) => {
+    console.log(`${req.method} request to delete a note`);
+    //console.log(JSON.stringify(req.params));
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            const parsedData = JSON.parse(data);
+            // Look for the element in parsedData with the requested 'id'
+            for (let [i, note] of parsedData.entries()) {
+                if (note.id === req.params.id){
+                    // Delete current element from parsedData
+                    parsedData.splice(i,1);
+                }
+            }
+            fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
+            err ? console.error(err) : console.info(`\nData deleted from db.json`)
+          );
+        }
+    });
+    const response = {
+        status: 'Success',
+    };
+    res.status(201).json(response);
+});
 module.exports = apiRoute;

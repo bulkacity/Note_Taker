@@ -1,12 +1,12 @@
 [
     {
-        "note_id": "120",
         "title": "Test Title",
-        "text": "Test text"
+        "text": "Test text",
+        "id": "120"
     },
     {
-        "note_id": "dfff0807-d546-464b-9758-ab6657c4d774",
-        "title": "test",
-        "text": "test"
+        "title": "dsfd",
+        "text": "sdf",
+        "id": "0834dddd-2e02-4893-a7e9-43f5dce48805"
     }
 ]
