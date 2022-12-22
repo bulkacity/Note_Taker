@@ -1,3 +1,13 @@
+
+<p>
+  <img src="https://img.shields.io/badge/-JavaScript-yellow" />
+  <img src="https://img.shields.io/badge/-OOP-red" />
+  <img src="https://img.shields.io/badge/-JSON-blue" />
+  <img src="https://img.shields.io/badge/-Express-blueviolet" />
+  <img src="https://img.shields.io/badge/UUID-orange"  />
+  <img src="https://img.shields.io/badge/-Node-green" />
+  <img src="https://img.shields.io/badge/-Heroku-grey" />
+</p>
 # Note Taker 
 
    The following application is called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
