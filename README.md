@@ -44,7 +44,7 @@ Satisfies all of the preceding acceptance criteria plus the following:
 
 ---
 ## Visuals:
-![Example](./Note_Taker/img/11-express-homework-demo-01.png)
+![Example](./img/11-express-homework-demo-01.png)
 ---
 ## Installation:
 Run npm install. 
