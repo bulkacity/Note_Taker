@@ -61,7 +61,7 @@ Run npm install.
 
 ---
 ## Tests:
-  Test instructions to be implemented on a later iteration, conduct generateMDfile.js test. We will expect a series of answers to be stored.
+No test parameters inserted at the moment.
 
 ---
 ## YoutubeChannel
